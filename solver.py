@@ -66,6 +66,8 @@ class Solver(object):
 
 		self.optimizer = optim.Adam(list(self.unet.parameters()),
 									  self.lr, [self.beta1, self.beta2])
+		if torch.cuda.is_available():
+			self.unet = torch.nn.DataParallel(self.unet).cuda()
 		self.unet.to(self.device)
 
 		# self.print_network(self.unet, self.model_type)
