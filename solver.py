@@ -13,12 +13,12 @@ import csv
 
 
 class Solver(object):
-	def __init__(self, config, train_loader, valid_loader, test_loader):
+	def __init__(self, config, train_loader, valid_loader):
 
 		# Data loader
 		self.train_loader = train_loader
 		self.valid_loader = valid_loader
-		self.test_loader = test_loader
+#		self.test_loader = test_loader
 
 		# Models
 		self.unet = None

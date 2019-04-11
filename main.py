@@ -46,14 +46,8 @@ def main(config):
                             num_workers=config.num_workers,
                             mode='valid',
                             augmentation_prob=0.)
-    test_loader = get_loader(image_path=config.test_path,
-                            image_size=config.image_size,
-                            batch_size=config.batch_size,
-                            num_workers=config.num_workers,
-                            mode='test',
-                            augmentation_prob=0.)
 
-    solver = Solver(config, train_loader, valid_loader, test_loader)
+    solver = Solver(config, train_loader, valid_loader)
 
     
     # Train and sample the images
@@ -92,7 +86,6 @@ if __name__ == '__main__':
     parser.add_argument('--model_path', type=str, default='./models')
     parser.add_argument('--train_path', type=str, default='../data/isic/train/')
     parser.add_argument('--valid_path', type=str, default='../data/isic/valid/')
-    parser.add_argument('--test_path', type=str, default='../data/isic/test/')
     parser.add_argument('--result_path', type=str, default='./result/')
 
     parser.add_argument('--cuda_idx', type=int, default=1)
